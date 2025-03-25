@@ -1,0 +1,33 @@
+document.getElementById('myForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission to handle validation
+
+  // Get form values
+  const textId = document.getElementById('text_id').value;
+  const name = document.getElementById('name').value;
+  const position = document.getElementById('position').value;
+  const city = document.getElementById('city').value;
+  const dateOfUse = document.getElementById('date_of_use').value;
+  const purpose = document.querySelector('input[name="purpose"]:checked');
+  const fileUpload = document.getElementById('file_upload').files.length;
+  const approvalSelect = document.getElementById('approval_select').value;
+
+  // Validate required fields
+  let errorMessage = '';
+
+  if (!textId) errorMessage += 'Text ID is required.\n';
+  if (!name) errorMessage += 'Text Name is required.\n';
+  if (!position) errorMessage += 'Text Position is required.\n';
+  if (!city) errorMessage += 'City is required.\n';
+  if (!dateOfUse) errorMessage += 'Date of Use is required.\n';
+  if (!purpose) errorMessage += 'Purpose is required.\n';
+  if (fileUpload === 0) errorMessage += 'File Attach is required.\n';
+  if (!approvalSelect) errorMessage += 'Approval Select is required.\n';
+
+  if (errorMessage) {
+    alert(errorMessage); // Display errors
+  } else {
+    alert('Form is valid and ready for submission!');
+    // Here, you can send the form data to the server or take further actions
+    // For example, sending the data via AJAX or submitting it to a server.
+  }
+});
